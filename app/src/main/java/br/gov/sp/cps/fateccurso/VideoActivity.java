@@ -27,20 +27,28 @@ public class VideoActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
         Button btnVoltar = findViewById(R.id.btnVoltar);
 
-        // Caminho do vídeo em res/raw
+        // O código de carregamento do vídeo foi comentado para evitar erro de compilação.
+        // Adicione um vídeo em res/raw/video_curso.mp4 e descomente as linhas abaixo.
+        /*
         String path = "android.resource://" + getPackageName() + "/" + R.raw.video_curso;
         videoView.setVideoURI(Uri.parse(path));
+        */
 
         btnPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (videoView.isPlaying()) {
-                    videoView.pause();
-                    btnPlayPause.setImageResource(android.R.drawable.ic_media_play);
-                } else {
-                    videoView.start();
-                    btnPlayPause.setImageResource(android.R.drawable.ic_media_pause);
-                    updateSeekBar();
+                // Verificação para não crashar se o vídeo não estiver carregado
+                try {
+                    if (videoView.isPlaying()) {
+                        videoView.pause();
+                        btnPlayPause.setImageResource(android.R.drawable.ic_media_play);
+                    } else if (videoView.getDuration() > 0) {
+                        videoView.start();
+                        btnPlayPause.setImageResource(android.R.drawable.ic_media_pause);
+                        updateSeekBar();
+                    }
+                } catch (Exception e) {
+                    // Previne crash caso o VideoView não tenha mídia carregada
                 }
             }
         });
@@ -54,7 +62,9 @@ public class VideoActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    videoView.seekTo(progress);
+                    try {
+                        videoView.seekTo(progress);
+                    } catch (Exception e) {}
                 }
             }
 
@@ -70,10 +80,17 @@ public class VideoActivity extends AppCompatActivity {
 
     private void updateSeekBar() {
         if (videoView != null) {
-            seekBar.setMax(videoView.getDuration());
-            seekBar.setProgress(videoView.getCurrentPosition());
-            if (videoView.isPlaying()) {
-                handler.postDelayed(this::updateSeekBar, 1000);
+            try {
+                int duration = videoView.getDuration();
+                if (duration > 0) {
+                    seekBar.setMax(duration);
+                    seekBar.setProgress(videoView.getCurrentPosition());
+                }
+                if (videoView.isPlaying()) {
+                    handler.postDelayed(this::updateSeekBar, 1000);
+                }
+            } catch (Exception e) {
+                // Silencia erros caso o player não esteja pronto
             }
         }
     }
