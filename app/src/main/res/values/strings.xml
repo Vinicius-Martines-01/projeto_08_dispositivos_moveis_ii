@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FATEC DSM</string>
+    <string name="fatec_diadema">FATEC Diadema</string>
+    <string name="dsm_title">Desenvolvimento de Software Multiplataforma (DSM)</string>
+    <string name="sobre_o_curso">Sobre o Curso</string>
+    <string name="desc_curso">O curso de DSM forma profissionais capacitados para projetar, desenvolver, testar e implantar softwares em diversas plataformas (Web, Mobile, Desktop). \n\nVocê aprenderá linguagens modernas, metodologias ágeis, banco de dados e UX/UI.</string>
+    <string name="mercado_trabalho">Mercado de Trabalho</string>
+    <string name="desc_mercado">A demanda por desenvolvedores multiplataforma é altíssima. Você poderá atuar como Desenvolvedor Full Stack, Mobile, Engenheiro de Software ou Arquiteto de Soluções.</string>
+    <string name="btn_vestibular">Informações do Vestibular</string>
+    <string name="btn_video">Assistir Vídeo do Curso</string>
+    <string name="vestibular_title">Informações do Vestibular</string>
+    <string name="como_funciona">Como funciona?</string>
+    <string name="desc_vestibular">O vestibular da FATEC ocorre semestralmente. A seleção é feita através de uma prova objetiva e uma redação, ou pela nota do ENEM (consulte o edital vigente).</string>
+    <string name="site_oficial">Site Oficial</string>
+    <string name="url_vestibular">As inscrições e o calendário completo podem ser encontrados em: www.vestibularfatec.com.br</string>
+    <string name="dicas_estudo">Dicas de Estudo</string>
+    <string name="desc_dicas">1. Revise conteúdos do Ensino Médio.\n2. Pratique com provas de anos anteriores.\n3. Fique atento aos prazos de inscrição!</string>
+    <string name="btn_voltar">Voltar para Início</string>
+    <string name="video_title">Vídeo do Curso</string>
+</resources>
